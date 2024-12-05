@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакти</title>
+    <style>
+        /* Загальні стилі */
+        body {
+            font-family: Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 10px;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            width: 100%;
+            box-sizing: border-box;
+            border-bottom: 1px solid #ddd;
+        }
+
+        header img {
+            height: 50px;
+            border-radius: 5px;
+            position: absolute;
+            left: 10px;
+        }
+
+        nav {
+            display: block;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            top: 60px;
+            right: 10px;
+            width: 80%;
+            border-radius: 5px;
+            flex-direction: column;
+        }
+
+        .dropdown ul {
+            list-style: none;
+            padding: 10px;
+            margin: 0;
+        }
+
+        .dropdown ul li {
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .dropdown ul li a {
+            text-decoration: none;
+            font-size: 18px;
+            color: #333;
+            display: block;
+        }
+
+        .dropdown.show {
+            display: flex;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .contact-info h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #218838;
+        }
+
+        @media (max-width: 767px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .dropdown.show {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="icon.png" alt="Логотип">
+    <div class="hamburger" onclick="toggleDropdown()">☰</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="products.html">Наші товари</a></li>
+            <li><a href="about.html">Про нас</a></li>
+            <li><a href="contacts.html">Контакти</a></li>
+        </ul>
+    </nav>
+    
+    <div class="dropdown">
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="products.html">Наші товари</a></li>
+            <li><a href="about.html">Про нас</a></li>
+            <li><a href="contacts.html">Контакти</a></li>
+        </ul>
+    </div>
+</header>
+
+<main class="content">
+    <div class="contact-info">
+        <h2>Контакти</h2>
+        <p>Зв'яжіться з нами для отримання додаткової інформації або консультацій.</p>
+        <p><strong>Телефон:</strong> +38 123 456 789</p>
+        <p><strong>Email:</strong> info@vrazhennya.com</p>
+    </div>
+
+    <div class="contact-form">
+        <h3>Напишіть нам</h3>
+        <input type="text" placeholder="Ваше ім'я" required>
+        <input type="email" placeholder="Ваш Email" required>
+        <textarea placeholder="Ваше повідомлення" required></textarea>
+        <button type="submit">Відправити</button>
+    </div>
+</main>
+
+<script>
+    function toggleDropdown() {
+        document.querySelector('.dropdown').classList.toggle('show');
+    }
+</script>
+
+</body>
+</html>

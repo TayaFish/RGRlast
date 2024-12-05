@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма замовлення</title>
+    <style>
+        /* Основні стилі */
+        body {
+            font-family: Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 10px;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            width: 100%;
+            box-sizing: border-box;
+            border-bottom: 1px solid #ddd;
+            flex-wrap: nowrap;
+        }
+
+        header img {
+            height: 50px;
+            border-radius: 5px;
+        }
+
+        /* Центрування навігаційного меню */
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            top: 60px;
+            right: 10px;
+            width: 80%;
+            border-radius: 5px;
+            flex-direction: column;
+        }
+
+        .dropdown ul {
+            list-style: none;
+            padding: 10px;
+            margin: 0;
+        }
+
+        .dropdown ul li {
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .dropdown ul li a {
+            text-decoration: none;
+            font-size: 18px;
+            color: #333;
+            display: block;
+        }
+
+        .dropdown.show {
+            display: flex;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .dropdown.show {
+                display: flex;
+            }
+        }
+
+        /* Стилі для форми */
+        .order-form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-sizing: border-box;
+        }
+
+        .order-form input,
+        .order-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .order-form button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .order-form button:hover {
+            background-color: #218838;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Заголовок і навбар -->
+<header>
+    <img src="icon.png" alt="Логотип">
+    <div class="hamburger" onclick="toggleDropdown()">☰</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="products.html">Наші товари</a></li>
+            <li><a href="about.html">Про нас</a></li>
+            <li><a href="contacts.html">Контакти</a></li>
+        </ul>
+    </nav>
+    <div class="dropdown">
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="products.html">Наші товари</a></li>
+            <li><a href="about.html">Про нас</a></li>
+            <li><a href="contacts.html">Контакти</a></li>
+        </ul>
+    </div>
+</header>
+
+<!-- Основний контент -->
+<main>
+    <h2>Форма замовлення</h2>
+
+    <form class="order-form">
+        <label for="name">Ім'я</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Телефон</label>
+        <input type="tel" id="phone" name="phone" required>
+
+
+        <label for="comments">Додаткові коментарі</label>
+        <textarea id="comments" name="comments" rows="4"></textarea>
+
+        <button type="submit">Підтвердити замовлення</button>
+    </form>
+</main>
+
+<script>
+    // Функція для бургер-меню
+    function toggleDropdown() {
+        const dropdown = document.querySelector('.dropdown');
+        dropdown.classList.toggle('show');
+    }
+
+    // Закрити меню, якщо клікаєш поза меню
+    window.onclick = function(event) {
+        const dropdown = document.querySelector('.dropdown');
+        const nav = document.querySelector('nav');
+        if (!dropdown.contains(event.target) && !nav.contains(event.target) && !document.querySelector('.hamburger').contains(event.target)) {
+            dropdown.classList.remove('show');
+        }
+    }
+</script>
+
+</body>
+</html>
+
